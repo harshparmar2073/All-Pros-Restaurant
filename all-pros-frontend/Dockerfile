@@ -1,14 +1,21 @@
 # Build stage
 FROM node:18-alpine AS build
 WORKDIR /app
+
+# Define build-time argument
+ARG VITE_BACKEND_URL
+ENV VITE_BACKEND_URL=$VITE_BACKEND_URL
+
 COPY . .
 RUN npm install
+
+# Pass the environment variable to Vite
 RUN npm run build
 
-# Production stage
-FROM nginx:alpine
-COPY --from=build /app/dist /usr/share/nginx/html
+# Serve with 'serve'
+FROM node:18-alpine
+WORKDIR /app
+RUN npm install -g serve
+COPY --from=build /app/dist ./dist
 EXPOSE 7070
-
-# Custom Nginx config (optional)
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "dist", "-l", "7070"]
