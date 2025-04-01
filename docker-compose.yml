@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: ./react-app
+    ports:
+      - "7070:7070"
+    expose:
+      - "7070"
+    environment:
+      - VITE_BACKEND_URL=https://allpro-api.stageserver.live/api
+
+  server:
+    build:
+      context: ./node-app
+    ports:
+      - "7071:5000"
+    expose:
+      - "5000"
+    environment:
+      - PORT=5000
+      - MONGODB_URI=mongodb+srv://harshparmar2073:JOd9RLKCmGB8T9pu@cluster0.z8bso.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
+      - JWT_SECRET=SFkTIFnLn03AAmqxOXmd
+      - JWT_RESET_SECRET=SFkTIFnLn03AAmqxOXmd
+      - JWT_EXPIRE=30d
+      - CORS_ORIGIN=https://allpro-app.stageserver.live
+      - MAILGUN_API_KEY=0d5af52a8ae4cbd80663531f6ef307b6-f6202374-31d9e5c4
+      - MAILGUN_DOMAIN=sandbox3505d87715a24f5d8dd441df2c6e0249.mailgun.org
+      - MAILGUN_SENDER_EMAIL=harshcparmar2073@gmail.com
