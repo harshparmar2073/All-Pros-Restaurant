@@ -76,7 +76,7 @@ export default function CreateJob({ onClose, onCreateJob }) {
       };
 
       try {
-        const response = await axios.post('http://localhost:5000/api/job/jobs', newJob);
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/job/jobs`, newJob);
         setSnackbarMsg('Job created successfully!');
         setSnackbarSeverity('success');
         setOpenSnackbar(true);

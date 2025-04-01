@@ -48,8 +48,9 @@ const UserLogin = () => {
     onSubmit: async (values) => {
       try {
         // Make an API call to your backend login endpoint
-        const response = await axios.post('http://localhost:5000/api/auth/login', {
-          email: values.email,
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/auth/login`,
+          {email: values.email,
           password: values.password,
           rememberMe: rememberMe
         });

@@ -82,7 +82,7 @@ const RestaurantSettings = () => {
     const fetchSettings = async () => {
       try {
         const response = await axios.get(
-          `/api/options/settings?ts=${new Date().getTime()}`,
+          `${import.meta.env.VITE_BACKEND_URL}options/settings?ts=${new Date().getTime()}`,
           { headers: { 'Cache-Control': 'no-cache' } }
         );
         // Assume the response contains notificationSettings and securitySettings
@@ -148,7 +148,7 @@ const RestaurantSettings = () => {
     
     try {
       // Make API call to update the password
-      const response = await axios.put('/api/options/settings/password', {
+      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/options/settings/password`, {
         oldPassword: passwordData.oldPassword,
         newPassword: passwordData.newPassword
       });
@@ -178,7 +178,7 @@ const RestaurantSettings = () => {
   const handleNotificationSave = async () => {
     try {
       // Make API call to update notification settings
-      const response = await axios.put('/api/options/settings/notifications', notificationSettings);
+      const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}options/settings/notifications`, notificationSettings);
       setAlert({
         open: true,
         message: response.data.message || 'Notification preferences saved successfully',

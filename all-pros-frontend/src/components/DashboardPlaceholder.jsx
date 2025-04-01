@@ -95,7 +95,7 @@ export default function DashboardPlaceholder() {
     console.log(userId);
     
     axios
-      .get(`http://localhost:5000/api/dashboard?userId=${userId}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/dashboard?userId=${userId}`)
       .then((res) => {
         setDashboardData(res.data);
       })

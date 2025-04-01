@@ -49,12 +49,13 @@ const RestaurantLogin = () => {
       try {
         // Call the login API
         const response = await axios.post(
-          'http://localhost:5000/api/restaurants/login',
+          `${import.meta.env.VITE_BACKEND_URL}/restaurants/login`,
           {
             supportEmail: values.email,
             password: values.password,
           }
         );
+        
 
         console.log('Login API response:', response.data); // Debug log
 

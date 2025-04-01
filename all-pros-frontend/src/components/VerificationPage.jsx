@@ -195,7 +195,7 @@ const VerificationPage = () => {
         }, 800);
       } else {
         // Proceed with normal verification via API
-        const response = await axios.post('http://localhost:5000/api/verify/verify', {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/verify/verify`, {
           email: userEmail,
           accountType,
           code: code,
@@ -262,7 +262,7 @@ const VerificationPage = () => {
 
     try {
       // Call the correct endpoint and send both email and accountType
-      await axios.post('http://localhost:5000/api/verify/send', {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/verify/send`, {
         email: userEmail,
         accountType,
       });

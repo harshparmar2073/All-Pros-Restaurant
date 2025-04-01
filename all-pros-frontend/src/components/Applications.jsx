@@ -69,7 +69,7 @@ export default function Applications() {
       console.error('No restaurant data found. Please ensure the user is authenticated.');
       return;
     }
-    axios.get(`http://localhost:5000/api/applications?userId=${restaurantId}`)
+    axios.get(`${import.meta.env.VITE_BACKEND_URL}/applications?userId=${restaurantId}`)
       .then((res) => {
         setApplications(res.data);
         setFilteredApps(res.data);

@@ -115,7 +115,7 @@ const UserSignup = () => {
         }
 
         // Send the POST request to your backend API endpoint
-        const response = await axios.post('http://localhost:5000/api/users/signup', formData, { 
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/users/signup`, formData, { 
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         

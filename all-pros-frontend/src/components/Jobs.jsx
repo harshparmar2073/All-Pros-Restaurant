@@ -212,7 +212,7 @@ export default function Jobs({ onOpenCreateJob }) {
 
     // IMPORTANT: Use "restaurantId" as the query parameter so backend filters by restaurant
     axios
-      .get(`http://localhost:5000/api/job/jobs?restaurantId=${restaurantId}`)
+      .get(`${import.meta.env.VITE_BACKEND_URL}/job/jobs?restaurantId=${restaurantId}`)
       .then((res) => {
         setJobs(res.data);
         setFilteredJobs(res.data);

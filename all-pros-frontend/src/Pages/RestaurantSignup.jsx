@@ -98,7 +98,10 @@ const RestaurantSignup = () => {
     }),
     onSubmit: async (values) => {
       try {
-        const response = await axios.post('http://localhost:5000/api/restaurants/signup', values);
+        const response = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/restaurants/signup`,
+          values
+        );        
         console.log('Signup successful:', response.data);
         // Save restaurant data in local storage
         localStorage.setItem('restaurantData', JSON.stringify(response.data.restaurant));
