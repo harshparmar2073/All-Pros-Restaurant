@@ -5,10 +5,11 @@ services:
     build:
       context: ./all-pros-backend
     ports:
-      - "7070:7070"
+      - "7071:7071"
     expose:
-      - "7070"
+      - "7071"
     environment:
+      - PORT=7071
       - MONGODB_URI=mongodb+srv://harshparmar2073:JOd9RLKCmGB8T9pu@cluster0.z8bso.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
       - JWT_SECRET=SFkTIFnLn03AAmqxOXmd
       - JWT_RESET_SECRET=SFkTIFnLn03AAmqxOXmd
@@ -21,10 +22,11 @@ services:
   server:
     build:
       context: ./all-pros-frontend
+      args:
+        VITE_BACKEND_URL: https://allpro-api.stageserver.live/api  
     ports:
-      - "7071:5000"
+      - "7070:7070"
     expose:
-      - "5000"
+      - "7070"
     environment:
-      - PORT=5000
-      - VITE_BACKEND_URL=https://allpro-api.stageserver.live/api
+      - PORT=7070
